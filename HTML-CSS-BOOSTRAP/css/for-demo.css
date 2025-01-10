@@ -1,0 +1,4 @@
+
+.form-control, .form-select, .form-range {
+    width: inherit/* Adjust the width as needed */
+  }
