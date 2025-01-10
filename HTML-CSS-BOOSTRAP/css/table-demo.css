@@ -26,10 +26,14 @@ ul {
 }
 
 table .primary {
-    background-color: aqua ;
+    background-color: aqua;
 }
 
-
 table .secondary {
-    background-color: rgb(127, 170, 235) ;
+    background-color: rgb(127, 170, 235);
+}
+
+.time-table{
+    margin-top: 100px;
+    position: relative;
 }
