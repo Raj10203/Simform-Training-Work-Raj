@@ -25,10 +25,11 @@ ul {
     height: 145px;
 }
 
-.primary {
-    background-color: aqua;
+table .primary {
+    background-color: aqua ;
 }
 
-.secondary {
-    background-color: rgb(127, 170, 235);
+
+table .secondary {
+    background-color: rgb(127, 170, 235) ;
 }
