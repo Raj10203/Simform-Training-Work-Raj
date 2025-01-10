@@ -10,3 +10,19 @@ th, td{
 .regular-row{
     padding: 30px 0;
 }
+ul{
+    list-style: none;
+    padding: 0;
+}
+
+#logo-img{
+    height: 145px;
+}
+
+.primary{
+background-color: aqua;
+}
+
+.secondary{
+background-color: rgb(127, 170, 235);
+}
