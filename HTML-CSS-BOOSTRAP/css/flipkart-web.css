@@ -60,7 +60,7 @@ section {
     display: none;
 }
 
-.dn2{
+.dn2 {
     display: none !important;
 }
 
@@ -79,7 +79,6 @@ section {
         display: flex !important;
 
     }
-    
 }
 
 .header-search {
@@ -98,6 +97,6 @@ section {
     margin: 0 10px;
 }
 
-.header-search-input:focus{
+.header-search-input:focus {
     outline: none;
 }
