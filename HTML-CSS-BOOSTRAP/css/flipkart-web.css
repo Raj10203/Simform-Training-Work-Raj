@@ -289,7 +289,7 @@ section {
     display: flex;
     flex-direction: column;
     padding: 20px;
-    background-color: black;
+  
 }
 
 .footer-perent {
@@ -303,7 +303,7 @@ section {
 .footer-child {
     min-width: 170px;
     height: 180px;
-    background-color: black;
+   
 }
 
 .footer-title {
@@ -323,7 +323,7 @@ section {
 }
 
 footer {
-    background-color: black;
+    background-color: rgb(56, 56, 56);
 }
 
 footer a,
