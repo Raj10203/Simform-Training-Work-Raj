@@ -1,7 +1,16 @@
-section {
-    background-color: #f1f3f5;
+* {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+
 }
 
+body {
+    background-color: #f1f3f5;
+}
+section{
+    margin: 10px 0;
+}
 .perent-head {
     width: 100%;
     display: flex;
@@ -65,7 +74,8 @@ section {
 
 
 .header-li-custom:hover #login-drop-down {
-display: block;}
+    display: block;
+}
 
 .header-li-custom {
     display: flex;
@@ -157,8 +167,9 @@ display: block;}
     background-color: white;
     z-index: 2;
 }
-.dropdown:hover > .dropdown-menu{
-   
+
+.dropdown:hover>.dropdown-menu {
+
     display: block;
     pointer-events: all;
 }
@@ -179,10 +190,74 @@ display: block;}
     height: 50%;
     color: black;
 }
-.list-group-item{
+
+.list-group-item {
     height: 40px;
     align-items: center;
     width: 100% !important;
+}
+
+.p3-perent {
+    width: 80%;
+    display: flex;
+    padding: 20px;
+    justify-content: space-between;
+    flex-direction: column;
+    background-color: white;
+}
+
+.p3-header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.p3-placeholder {
+    display: flex;
+    justify-content: normal;
+    overflow-x: scroll;
+    width: 100%;
+}
+
+.advertise {
+    margin: 0 10px;
+    width: 20%;
+}
+
+.advertise>img {
+    width: 100%;
+    max-height: 380px;
+
+}
+
+#body-part-3>.container-fluid {
+    display: flex;
+    justify-content: space-between;
+}
+
+.item-p3 img {
+    height: 142px;
+    width: 142px;
+}
+.item-p3 img:hover{
+    scale: 1.05;
+}
+.card {
+    width: max-content;
+    padding: 10px;
+}
+
+.p3-item-dis {
+    width: 180px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.p4-perent{
+    background-color: white;
+    padding: 20px;
 }
 
 @media(max-width:1430px) {
