@@ -5,12 +5,23 @@
 
 }
 
+.navbar {
+    background-color: white;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
 body {
     background-color: #f1f3f5;
 }
-section{
+
+section {
     margin: 10px 0;
 }
+
 .perent-head {
     width: 100%;
     display: flex;
@@ -89,11 +100,11 @@ section{
 }
 
 .dn {
-    display: none;
+    display: block;
 }
 
 .dn2 {
-    display: none !important;
+    display: flex !important;
 }
 
 
@@ -139,10 +150,6 @@ section{
     object-fit: cover;
 }
 
-.p1-placeholder a {
-    text-decoration: none;
-    color: black;
-}
 
 .p1-placeholder {
     width: 100%;
@@ -239,9 +246,11 @@ section{
     height: 142px;
     width: 142px;
 }
-.item-p3 img:hover{
+
+.item-p3 img:hover {
     scale: 1.05;
 }
+
 .card {
     width: max-content;
     padding: 10px;
@@ -255,11 +264,60 @@ section{
     text-overflow: ellipsis;
 }
 
-.p4-perent{
+.p4-perent {
     background-color: white;
     padding: 20px;
 }
+.footer-pp{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: black;
+}
 
+.footer-perent {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    gap:10px ;
+    justify-content: space-evenly;
+}
+
+.footer-child {
+    min-width: 170px;
+    height: 180px;
+    background-color: black;
+}
+
+.footer-title {
+    color: #878787;
+}
+.footer-body{
+    display: flex;
+    flex-direction: column;
+}
+.footer-brand{
+    display: flex;
+}
+
+footer a , footer{
+    color: white;
+    font-weight: bolder;
+}
+.fb-item , .fb-item span{
+    font-size: small;
+    font-weight: lighter;
+    width: max-content;
+    /* min-width: 200px; */
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.fb-item i{
+    margin: 10px;
+    color: goldenrod;
+}
 @media(max-width:1430px) {
     .p1-placeholder {
         width: 100%;
@@ -272,20 +330,29 @@ section{
     .container-fluid {
         width: 100%;
     }
+
+    .advertise {
+        display: none;
+    }
+
+    .p3-perent {
+        width: 100%;
+    }
+
 }
 
-@media (min-width: 10px) {
-    .navbar-expand-lg .navbar-nav {
-        flex-direction: row;
+
+@media (max-width: 820px) {
+
+  
+    .dn2{
+        display: none !important;
     }
 }
+@media (max-width: 620px) {
 
-@media (min-width: 820px) {
+  
     .dn {
-        display: block !important;
-    }
-
-    .dn2 {
-        display: flex !important;
+        display: none !important;
     }
 }
