@@ -242,7 +242,7 @@ section {
 }
 
 .advertise {
-    margin: 0 10px;
+    margin: 0 0 0 10px;
     width: 20%;
 }
 
@@ -341,11 +341,13 @@ footer {
     align-items: center;
     color: white;
 }
-.dn3{
+
+.dn3 {
     display: none;
     align-items: center;
     justify-content: center;
 }
+
 .fb-item i {
     margin: 10px;
     color: goldenrod;
@@ -376,52 +378,56 @@ footer {
 
 
 @media (max-width: 820px) {
-
-
     .dn2 {
         display: none !important;
     }
 }
 
 @media (max-width: 620px) {
-
-
     .dn {
         display: none !important;
     }
 }
-@media (max-width: 768px) {
 
-    .p3-placeholder{
+@media (max-width: 768px) {
+    .p3-placeholder {
         flex-direction: column;
         overflow-y: scroll;
         height: 400px;
         align-items: center;
     }
-    .card{
+
+    .card {
         flex-direction: row;
         height: 100px;
         width: 100%;
     }
-    .card img{
+
+    .card img {
         height: 80px;
     }
-    .item-p3{
+
+    .item-p3 {
         width: 100%;
     }
-    .p3-item-price{
+
+    .p3-item-price {
         text-align: left;
     }
-    .btn.btn-secondary{
+
+    .btn.btn-secondary {
         display: none;
     }
-    .card-body{
+
+    .card-body {
         padding: 0;
     }
-    .dn3{
+
+    .dn3 {
         display: flex;
     }
-    .p3-perent{
+
+    .p3-perent {
         padding: 2px;
     }
 }
