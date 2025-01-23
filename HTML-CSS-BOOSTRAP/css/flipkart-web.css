@@ -292,23 +292,42 @@ section {
 
 .footer-child {
     min-width: 170px;
-    height: 180px;
 }
 
 .footer-title {
+    text-transform: uppercase;
+    font-size: 14px;
+    margin: 10px 0;
     color: #878787;
+    font-weight: 300;
 }
 
 .footer-body {
     display: flex;
+    font-size: 13px;
     flex-direction: column;
+    padding: 0 20px 0 0;
+}
+
+.fb {
+    border-left: 1px solid rgb(170, 169, 169);
 }
 
 .footer-brand {
+    border-top: 1px solid rgb(170, 169, 169);
+    padding-top: 5px;
     display: flex;
     width: 100%;
     flex-wrap: wrap;
     justify-content: space-evenly;
+}
+
+.footer-body>span {
+    font-weight: 380;
+}
+
+.footer-body>p>a {
+    color: rgb(67, 67, 241);
 }
 
 footer {
@@ -318,7 +337,7 @@ footer {
 footer a,
 footer {
     color: white;
-    font-weight: bolder;
+    font-weight: 500;
 }
 
 .fb-item,
@@ -340,6 +359,14 @@ footer {
 .fb-item i {
     margin: 10px;
     color: goldenrod;
+}
+
+.footer-icons {
+    margin: 10px 0;
+    display: flex;
+    width: 50%;
+    align-items: center;
+    justify-content: space-between;
 }
 
 @media(max-width:1430px) {
@@ -416,5 +443,17 @@ footer {
 
     .p3-perent {
         padding: 2px;
+    }
+}
+
+@media(max-width : 1444px) {
+    .fb {
+        border: none;
+    }
+}
+
+@media(max-width : 454px) {
+    .fb{
+        flex-direction: column;
     }
 }
