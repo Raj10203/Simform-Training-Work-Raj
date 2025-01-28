@@ -526,3 +526,40 @@
 //   }
 //   let obj = { canEat: false };
 //   alert(obj instanceof Animal);
+// for (let prop2 of document.body.childNodes) console.log(prop2);
+//   alert( Array.from(document.body.childNodes).filter );
+// get td with "two" (first row, second column)
+// let flag1 = true;
+// function btnClickHandler()
+// {
+//     let td = table.rows[0].cells[1];
+//     if(flag1)
+//     {
+//         td.style.backgroundColor = "red"; 
+//         flag1 = false;
+//     }
+//     else{
+//         td.style.backgroundColor = "orange"; 
+//         flag1 = true;
+
+//     }
+
+// }
+// let div = document.getElementsByTagName('div');
+// // let field = div[0].getAttribute('order-state');
+// // div[0].setAttribute('order-state', 'pending')
+// order.dataset.orderState = "new"; // (*)
+// // alert(order.dataset.orderState); // new
+// setTimeout(()=>{
+//     order.dataset.orderState = "canceled"; // (*)
+
+// },2000);
+
+function btnClick(){
+    let div = document.createElement('div');
+    div.className = "alert";
+    div.innerHTML = "<strong>Hi there!</strong> You've read an important message.";
+    
+    document.body.prepend(div);
+}
+
