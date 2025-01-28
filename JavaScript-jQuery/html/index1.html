@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js & jQuery</title>
+
+    <style>
+        .alert {
+            padding: 15px;
+            border: 1px solid #d6e9c6;
+            border-radius: 4px;
+            color: #3c763d;
+            background-color: #dff0d8;
+        }
+    </style>
+</head>
+
+<body>
+    <ol id="ol">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ol>
+    <button onclick="btnClick();">click me !</button>
+    <script src="../js/index.js"></script>
+    <script>
+        ol.before('before'); // insert string "before" before <ol>
+        ol.after('after'); // insert string "after" after <ol>
+
+        let liFirst = document.createElement('li');
+        liFirst.innerHTML = 'prepend';
+        ol.prepend(liFirst); // insert liFirst at the beginning of <ol>
+
+        let liLast = document.createElement('li');
+        liLast.innerHTML = 'append';
+        ol.append(liLast); // insert liLast at
+        ol.before(document.createElement('hr'),'<p>Hello</p>', "<br>hehe");
+    </script>
+</body>
+
+</html>
