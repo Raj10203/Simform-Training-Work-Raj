@@ -19,14 +19,14 @@
       <form>
         <div class="amount">
           <p>Enter Amount</p>
-          <input value="1" type="text" />
+          <input value="1" type="number" onchange="updateExchangeRate()" />
         </div>
         <div class="dropdown">
           <div class="from">
             <p>From</p>
             <div class="select-container">
               <img src="https://flagsapi.com/US/flat/64.png" />
-              <select name="from"></select>
+              <select name="from" onchange="updateExchangeRate()"></select>
             </div>
           </div>
           <i class="fa-solid fa-arrow-right-arrow-left"></i>
@@ -34,12 +34,12 @@
             <p>To</p>
             <div class="select-container">
               <img src="https://flagsapi.com/IN/flat/64.png" />
-              <select name="to"></select>
+              <select name="to" onchange="updateExchangeRate()"></select>
             </div>
           </div>
         </div>
         <div class="msg">1USD = 80INR</div>
-        <button>Get Exchange Rate</button>
+        
       </form>
     </div>
     <script src="../js/codes.js"></script>

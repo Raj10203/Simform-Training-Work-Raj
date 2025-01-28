@@ -19,9 +19,7 @@ for (let select of dropdowns) {
     select.append(newOption);
   }
 
-  select.addEventListener("change", (evt) => {
-    updateFlag(evt.target);
-  });
+  
 }
 
 const updateExchangeRate = async () => {
@@ -40,7 +38,10 @@ const updateExchangeRate = async () => {
   let rate = data[fromCurr.value.toLowerCase()][toCurr.value.toLowerCase()];
 
   let finalAmount = amtVal * rate;
-  msg.innerText = `${amtVal} ${fromCurr.value} = ${finalAmount} ${toCurr.value}`;
+  let x = amtVal * 1;
+  console.log(typeof(x));
+  
+  msg.innerText = `${x} ${fromCurr.value} = ${finalAmount} ${toCurr.value}`;
 };
 
 const updateFlag = (element) => {
@@ -51,10 +52,6 @@ const updateFlag = (element) => {
   img.src = newSrc;
 };
 
-btn.addEventListener("click", (evt) => {
-  evt.preventDefault();
-  updateExchangeRate();
-});
 
 window.addEventListener("load", () => {
   updateExchangeRate();

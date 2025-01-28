@@ -15,8 +15,8 @@
     background-color: #fff;
     padding: 2rem;
     border-radius: 1rem;
-    min-height: 45vh;
-    width: 40vh;
+    /* min-height: 45vh; */
+    min-width: 40vh;
   }
   
   form {
