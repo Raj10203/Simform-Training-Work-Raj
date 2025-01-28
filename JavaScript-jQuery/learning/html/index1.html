@@ -14,19 +14,28 @@
             color: #3c763d;
             background-color: #dff0d8;
         }
+
+       
     </style>
+
+
 </head>
 
 <body>
-    <ol id="ol">
+    <!-- <ol id="ol">
         <li>1</li>
         <li>2</li>
         <li>3</li>
         <li>4</li>
     </ol>
+    <div id="div"></div>
     <button onclick="btnClick();">click me !</button>
+    <div id="first">First</div>
+    <div id="second">Second</div>
     <script src="../js/index.js"></script>
     <script>
+        // no need to call remove
+
         ol.before('before'); // insert string "before" before <ol>
         ol.after('after'); // insert string "after" after <ol>
 
@@ -36,8 +45,24 @@
 
         let liLast = document.createElement('li');
         liLast.innerHTML = 'append';
-        ol.append(liLast); // insert liLast at
-        ol.before(document.createElement('hr'),'<p>Hello</p>', "<br>hehe");
+        ol.append(liLast);
+        div.insertAdjacentHTML('beforeend', '<p style="margin:0;">Bye</p> <hr style="margin:0;"><h1 style="margin:0;">hehe</h1>');
+     // take #second and after it insert #first
+        setTimeout(() => {
+            // div.remove();
+            second.after(first); 
+        }, 5000);
+    </script> -->
+    <div class="alert" id="div">
+        <strong>Hi there!</strong> You've read an important message.
+    </div>
+
+    <script>
+        let div2 = div.cloneNode(true); // clone the message
+        div2.innerHTML += " <strong>Bye there!</strong>";
+        div2.querySelector('strong').innerHTML = 'Bye there!'; // change the clone
+
+        div.after(div2); // show the clone after the existing div
     </script>
 </body>
 
