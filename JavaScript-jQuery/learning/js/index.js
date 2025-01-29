@@ -552,7 +552,6 @@
 // // alert(order.dataset.orderState); // new
 // setTimeout(()=>{
 //     order.dataset.orderState = "canceled"; // (*)
-
 // },2000);
 
 function btnClick(){

@@ -14,8 +14,6 @@
             color: #3c763d;
             background-color: #dff0d8;
         }
-
-       
     </style>
 
 
@@ -53,16 +51,27 @@
             second.after(first); 
         }, 5000);
     </script> -->
-    <div class="alert" id="div">
+    <div class="alert" id="div" data-custom="hehe">
         <strong>Hi there!</strong> You've read an important message.
     </div>
-
+    <input class="form-input" id="input">
     <script>
-        let div2 = div.cloneNode(true); // clone the message
-        div2.innerHTML += " <strong>Bye there!</strong>";
-        div2.querySelector('strong').innerHTML = 'Bye there!'; // change the clone
+        // let div2 = div.cloneNode(true); // clone the message
+        // div2.innerHTML += " <strong>Bye there!</strong>";
+        // div2.querySelector('strong').innerHTML = 'Bye there!'; // change the clone
 
-        div.after(div2); // show the clone after the existing div
+        // div.after(div2); // show the clone after the existing div
+        let input = document.getElementById('input');
+
+        // attribute => property
+        input.setAttribute('value', 'text');
+        alert(input.value); // text
+
+        // NOT property => attribute
+        input.value = 'newValue';
+        input.dataset.custom = "hihi";
+        // input.setAttribute('value', '10');
+        console.log(input.attributes)
     </script>
 </body>
 
