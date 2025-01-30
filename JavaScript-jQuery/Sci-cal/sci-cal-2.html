@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -106,25 +106,9 @@
             }
 
             // Basic arithmetic operations
-            add(a, b) {
-                return a + b;
-            }
+            
 
-            subtract(a, b) {
-                return a - b;
-            }
-
-            multiply(a, b) {
-                return a * b;
-            }
-
-            divide(a, b) {
-                if (b === 0) {
-                    throw new Error("Cannot divide by zero");
-                }
-                return a / b;
-            }
-
+           
             // Scientific operations
             sin(x) {
                 return Math.sin(x);
@@ -169,6 +153,8 @@
             // Handle result
             calculateResult() {
                 try {
+                    console.log(this.currentInput);
+                    
                     this.result = eval(this.currentInput); // Evaluate the expression
                     this.history.push({ input: this.currentInput, result: this.result });
                     this.updateDisplay(this.result);

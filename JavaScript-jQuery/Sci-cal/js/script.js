@@ -1,211 +1,305 @@
-let num = 0;
-let evalString = ""
-let dummy = ""
-let defaultDegree = true;
 let Ans;
-let shift = false;
+
 class Calculator {
     constructor() {
-        this.num = 0;
+        this.radian = 0;
+        this.num = "";
         this.evalString = "";
         this.dummy = "";
         this.defaultDegree = true;
-        this.Ans;
         this.shift = false;
+
     }
-    sinRad(x) {
-        return Math.sin(x);
-    }
-    sinDeg(x) {
-        return Math.sin(x * Math.PI / 180);
-    }
+
+
     number(result) {
-        this.num = this.num * 10 + Number(result)
+
+        this.num += String(result);
+        console.log('string' + this.num);
+
+
         this.dummy += String(result);
-        displayChanges(this.dummy);
-        console.log(this.num);
-        console.log(this.dummy);
-        
+        displayInput(this.dummy);
+        console.log('num :' + this.num);
+        console.log('dummy :' + this.dummy);
+    }
+    depOper(value) {
+        console.log(value);
+        this.dummy += String(value);
+        displayInput(this.dummy);
+        this.evalString += this.num;
+        this.num = "";
+        this.evalString += value;
+        console.log('evalSring :' + this.evalString);
+    }
+    equal() {
+
+        this.evalString += this.num;
+        this.num = "";
+
+        try {
+            this.dummy = eval(this.evalString);
+            Ans = Number(this.dummy);
+            console.log('dummy :' + this.dummy);
+            console.log('num :' + this.num);
+            console.log('evalSring : ' + this.evalString);
+            this.evalString = eval(this.evalString);
+            this.evalString = "";
+            displayAns(this.dummy);
+            this.dummy = "";
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    ans() {
+        this.dummy += Ans;
+        this.num = Ans;
+        displayInput(this.dummy);
+        console.log('dummy :' + this.dummy);
+        console.log('num :' + this.num);
+        console.log('evalSring : ' + this.evalString);
+    }
+    clear() {
+        this.dummy = ""
+        this.num = "";
+        this.evalString = "";
+        displayInput(0);
+
+    }
+    sin() {
+        this.dummy = this.evalString + `sin(${this.num})`;
+        displayInput(this.dummy);
+        this.radian = this.defaultDegree ? this.num * Math.PI / 180 : this.num;
+        this.num = Math.sin(this.radian);
+        console.log('dummy :' + this.dummy);
+        console.log('num :' + this.num);
+        console.log('evalSring : ' + this.evalString);
+    }
+    sinInv() {
+        this.dummy = this.evalString + `sinInv(${this.num})`;
+        displayInput(this.dummy);
+        this.num = Math.asin(this.num);
+        this.num = this.defaultDegree ? this.num * 180 / Math.PI : this.num;
+        console.log('dummy :' + this.dummy);
+        console.log('num :' + this.num);
+        console.log('evalSring : ' + this.evalString)
+    }
+    cos() {
+        this.dummy = this.evalString + `cos(${this.num})`;
+        displayInput(this.dummy);
+        this.radian = this.defaultDegree ? this.num * Math.PI / 180 : this.num;
+        this.num = Math.cos(this.radian);
+        console.log('dummy :' + this.dummy);
+        console.log('num :' + this.num);
+        console.log('evalSring : ' + this.evalString);
+    }
+    cosInv() {
+        this.dummy = this.evalString + `cosInv(${this.num})`;
+        displayInput(this.dummy);
+        this.num = Math.acos(this.num);
+        this.num = this.defaultDegree ? this.num * 180 / Math.PI : this.num;
+        console.log('dummy :' + this.dummy);
+        console.log('num :' + this.num);
+        console.log('evalSring : ' + this.evalString);
+    }
+    tan() {
+        this.dummy = this.evalString + `tan(${this.num})`;
+        displayInput(this.dummy);
+        this.radian = this.defaultDegree ? this.num * Math.PI / 180 : this.num;
+        this.num = Math.tan(this.radian);
+        console.log('dummy :' + this.dummy);
+        console.log('num :' + this.num);
+        console.log('evalSring : ' + this.evalString);
+    }
+    tanInv() {
+        this.dummy = this.evalString + `tanInv(${this.num})`;
+        displayInput(this.dummy);
+        this.num = Math.atan(this.num);
+        this.num = this.defaultDegree ? this.num * 180 / Math.PI : this.num;
+        console.log('dummy :' + this.dummy);
+        console.log('num :' + this.num);
+        console.log('evalSring : ' + this.evalString);
+    }
+    log10() {
+        this.dummy = this.evalString + `log10(${this.num})`;
+        displayInput(this.dummy);
+        this.num = Math.log10(this.num);
+        console.log('dummy :' + this.dummy);
+        console.log('num :' + this.num);
+        console.log('evalSring : ' + this.evalString);
+    }
+    log() {
+        this.dummy = this.evalString + `log10(${this.num})`;
+        displayInput(this.dummy);
+        this.num = Math.log(this.num);
+        console.log('dummy :' + this.dummy);
+        console.log('num :' + this.num);
+        console.log('evalSring : ' + this.evalString);
     }
 
-}
-(function () {
-    let calc = new Calculator;
-    document.querySelectorAll('.btnd').forEach(button => {
-        button.addEventListener('click', () => {
-            if (button.getAttribute('data-type')=='number') {
-                calc.number(button.getAttribute('data-value'));
-            }
-            else{
-                if(button.getAttribute('data-type')=='depOpe'){
+    nonDepOpe(id, name = '0') {
+        switch (id) {
+            case 'sin':
+                console.log('name' + name);
 
+                if (name == '1') {
+                    this.sinInv();
                 }
-            }
-        })
-    })
+                else {
+                    this.sin();
+                }
+                break;
+            case 'cos':
+                console.log('name' + name);
 
-})();
+                if (name == '1') {
+                    this.cosInv();
+                }
+                else {
+                    this.cos();
+                }
+                break;
 
-function numberClickHandler(id) {
-    calc.number(id);
-    console.dir('number clicked : ' + id);
-    num = num * 10 + Number(id);
-    dummy += String(id);
-    displayChanges(dummy);
-    console.log('num :' + num);
-    console.log('evalSring : ' + evalString);
-}
+            case 'tan':
+                console.log('name' + name);
 
-function radianDegree() {
-    defaultDegree = (defaultDegree) ? false : true;
-    console.log(defaultDegree);
-    document.getElementById('radianDegree').innerText = (defaultDegree) ? 'Degree' : 'Redian';
-}
+                if (name == '1') {
+                    this.tanInv();
+                }
+                else {
+                    this.tan();
+                }
+                break;
 
-function displayAns(ans) {
-    let ch = document.getElementById('ans');
-    ch.value = ans;
+            case 'log':
+                this.log10();
+                break;
 
-}
-function displayChanges(changes) {
-    let ch = document.getElementById('changes');
-    ch.value = changes;
+            case 'ln':
+                this.log();
 
-}
-function ansClick() {
-    dummy = Ans;
-    // evalString = Ans;
-    num = Ans;
-    displayChanges(dummy);
-    displayAns("");
-    console.log('dummy :' + dummy);
-    console.log('num :' + num);
-    console.log('evalSring : ' + evalString);
-}
+                break;
 
-function dependentOperator(id) {
-    console.dir(id);
+            case 'fac':
+                console.log(this.num);
+                let res = 1;
+                for (let i = 1; i <= this.num; i++) {
+                    res *= i;
+                }
+                this.dummy += "!";
+                this.num = res;
+                displayInput(this.dummy)
+                console.log('dummy :' + this.dummy);
+                console.log('num :' + this.num);
+                console.log('evalSring : ' + this.evalString);
 
-    dummy += String(id);
-    displayChanges(dummy);
-    evalString += num;
-    num = 0;
-    evalString += id;
-    console.log('evalSring :' + evalString);
-    // displayChanges(evalString);
-}
-function equalClickHandler() {
+                break;
 
-    evalString += num;
-
-    num = 0;
-    try {
-        dummy = eval(evalString);
-        Ans = Number(dummy);
-        evalString = eval(evalString);
-        // num = Number(evalString);
-        console.log('dummy :' + dummy);
-        console.log('num :' + num);
-        console.log('evalSring : ' + evalString);
-        evalString = "";
-        displayAns(dummy);
-        dummy = "";
-
-    } catch (error) {
-        console.log(error)
-    }
-}
-function clearClickHandler() {
-    dummy = ""
-    num = 0;
-    evalString = "";
-    displayChanges(0);
-}
-
-let radian = 0;
-function nonDepOperator(id, name = '0') {
-    switch (id) {
-        case 'sin':
-            console.log('name' + name);
-
-            if (name == '1') {
-                sinInverce(num);
-            }
-            else {
-
-                dummy = evalString + `sin(${num})`;
-                displayChanges(dummy);
-                radian = defaultDegree ? num * Math.PI / 180 : num;
-                num = Math.sin(radian);
-                // evalString += num;
-                // num = ;
-                console.log('dummy :' + dummy);
-                console.log('num :' + num);
-                console.log('evalSring : ' + evalString);
-            }
-            break;
-
-        case 'cos':
-            dummy = evalString + `cos(${num})`;
-            displayChanges(dummy);
-            radian = defaultDegree ? num * Math.PI / 180 : num;
-            num = Math.cos(radian);
-            // evalString += num;
-            // num = ;
-            console.log('dummy :' + dummy);
-            console.log('num :' + num);
-            console.log('evalSring : ' + evalString);
-            // console.log(evalString);
-            break;
-
-        case 'tan':
-            dummy = evalString + `tan(${num})`;
-            displayChanges(dummy);
-            radian = defaultDegree ? num * Math.PI / 180 : num;
-            num = Math.tan(radian);
-            // evalString += num;
-            // num = ;
-            console.log('dummy :' + dummy);
-            console.log('num :' + num);
-            console.log('evalSring : ' + evalString);
-            // console.log(evalString);
-            break;
-        default:
-            break;
-    }
-}
-
-function shiftClicked() {
-    let sin = document.getElementById('sin');
-    let cos = document.getElementById('cos');
-    let tan = document.getElementById('tan');
-
-    if (shift) {
-        sin.innerHTML = 'sin';
-        cos.innerHTML = 'cos';
-        tan.innerHTML = 'tan';
-        sin.setAttribute('name', '0')
-        cos.setAttribute('name', '0')
-        tan.setAttribute('name', '0')
-        shift = false;
-    }
-    else {
-        sin.innerHTML = 'sin<sup>-1</sup>'
-        cos.innerHTML = 'cos<sup>-1</sup>';
-        tan.innerHTML = 'tan<sup>-1</sup>';
-        sin.setAttribute('name', '1')
-        cos.setAttribute('name', '1')
-        tan.setAttribute('name', '1')
-        shift = true;
+            default:
+                break;
+        }
 
     }
+    radianDegree() {
+        this.defaultDegree = (this.defaultDegree) ? false : true;
+        console.log(this.defaultDegree);
+        document.getElementById('radianDegree').innerText = (this.defaultDegree) ? 'Degree' : 'Redian';
+    }
+    shiftBtn() {
+        console.log(this.shift);
+
+        let sin = document.getElementById('sin');
+        let cos = document.getElementById('cos');
+        let tan = document.getElementById('tan');
+        let x_1 = document.getElementById('xInv');
+
+        if (this.shift) {
+            x_1.innerHTML = 'x<sup>-1</sup>'
+            sin.innerHTML = 'sin';
+            cos.innerHTML = 'cos';
+            tan.innerHTML = 'tan';
+            x_1.setAttribute('data-type', 'depOpe')
+            x_1.setAttribute('data-value', '**-1')
+            sin.setAttribute('name', '0')
+            cos.setAttribute('name', '0')
+            tan.setAttribute('name', '0')
+            this.shift = false;
+        }
+        else {
+            x_1.innerHTML = 'x!';
+            sin.innerHTML = 'sin<sup>-1</sup>'
+            cos.innerHTML = 'cos<sup>-1</sup>';
+            tan.innerHTML = 'tan<sup>-1</sup>';
+            x_1.setAttribute('data-type', 'nonDepOpe')
+            x_1.setAttribute('data-value', 'fac')
+            sin.setAttribute('name', '1')
+            cos.setAttribute('name', '1')
+            tan.setAttribute('name', '1')
+            this.shift = true;
+        }
+    }
+    ce()
+    {
+        if(this.num){
+            this.num = this.num.slice(0,-1);
+            this.dummy = this.dummy.slice(0,-1);
+            displayInput(this.dummy);
+            console.log('dummy :' + this.dummy);
+            console.log('num :' + this.num);
+            console.log('evalSring : ' + this.evalString);
+
+        }
+        else{
+            console.log('evalSring : ' + this.evalString);
+            this.evalString = this.evalString.slice(0,-1);
+            this.dummy = this.evalString;
+            displayInput(this.evalString); 
+            console.log('dummy :' + this.dummy);
+            console.log('num :' + this.num);
+            console.log('evalSring : ' + this.evalString);
+        }
+    }
+    memory(funcName, obj) {
+        switch (funcName) {
+            case 'ms':
+                console.log("ms");
+                obj.ms(Ans);
+                console.log(obj.memory);
+                break;
+
+            case 'm+':
+                console.log("m+");
+                obj.memory += Ans;
+                // obj.ms(10);   
+                console.log(obj.memory);
+                break;
+
+            case 'mc':
+                console.log("mc");
+                obj.memory = 0;
+                // obj.ms(10);   
+                console.log(obj.memory);
+                break;
+
+            case 'm-':
+                console.log("m-");
+                obj.memory -= Ans;
+                // obj.ms(10);   
+                console.log(obj.memory);
+                break;
+
+            case 'mr':
+                console.log("mr");
+                Ans = obj.memory;
+                displayAns(Ans);
+                console.log(obj.memory);
+                break;
+
+            default:
+                break;
+        }
+    }
 }
-function sinInverce() {
-    dummy = evalString + `sinInv(${num})`;
-    displayChanges(dummy);
-    num = Math.asin(num);
-    num = defaultDegree ? num * 180 / Math.PI : num;
-    console.log('dummy :' + dummy);
-    console.log('num :' + num);
-    console.log('evalSring : ' + evalString)
-}
+
+

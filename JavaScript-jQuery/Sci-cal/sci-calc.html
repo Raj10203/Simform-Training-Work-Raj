@@ -12,57 +12,59 @@
 
 <body>
     <div class="container d-flex">
-        <div>
-            <button class="btn btn-primary" id="radianDegree" onclick="radianDegree()">Degree</button>
+        <div >
+            <button class="btn btn-primary" id="radianDegree" data-type="radianDegree">Degree</button>
             <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off" >
-                <label class="btn btn-outline-danger" for="btncheck1" onclick="shiftClicked()">Shift</label>
-              </div>
+                <input type="checkbox" class="btn-check"  id="btncheck1" autocomplete="off" >
+                <label class="btn btn-outline-danger" for="btncheck1" data-type="shift">Shift</label>
+            </div>
+            <button class="btn btn-primary" id="memClear" data-type="memory" data-value="mc">MC</button>
+            <button class="btn btn-primary" id="memStore" data-type="memory" data-value="ms">MS</button>
+            <button class="btn btn-primary" id="memRead" data-type="memory" data-value="mr">MR</button>
+            <button class="btn btn-primary" id="memPlus" data-type="memory" data-value="m+">M+</button>
+            <button class="btn btn-primary" id="memMinus" data-type="memory" data-value="m-">M-</button>
 
         </div>
         <input type="text" id="changes" readonly value="0">
         <input type="text" id="ans" readonly value="0">
-        <div class="base number">
+        <div class=" number">
 
-            <button class="btnd btn-primary" data-value="1" data-type="number" >1</button>
-            <button class="btnd btn-primary" data-value="2" data-type="number" >2</button>
-            <button class="btnd btn-primary" data-value="3" data-type="number" >3</button>
-            <button class="btnd btn-primary" data-value="4" data-type="number" >4</button>
-            <button class="btnd btn-primary" data-value="5" data-type="number" >5</button>
-            <button class="btnd btn-primary" data-value="6" data-type="number" >6</button>
-            <button class="btnd btn-primary" data-value="7" data-type="number" >7</button>
-            <button class="btnd btn-primary" data-value="8" data-type="number" >8</button>
-            <button class="btnd btn-primary" data-value="9" data-type="number" >9</button>
-            <button class="btnd btn-primary" data-value="0" data-type="number" >0</button>
-            <button class="btn btn-primary number" id="1" onclick="numberClickHandler(this.id)">1</button>
-            <button class="btn btn-primary number" id="2" onclick="numberClickHandler(this.id)">2</button>
-            <button class="btn btn-primary number" id="3" onclick="numberClickHandler(this.id)">3</button>
-            <button class="btn btn-primary number" id="4" onclick="numberClickHandler(this.id)">4</button>
-            <button class="btn btn-primary number" id="5" onclick="numberClickHandler(this.id)">5</button>
-            <button class="btn btn-primary number" id="6" onclick="numberClickHandler(this.id)">6</button>
-            <button class="btn btn-primary number" id="7" onclick="numberClickHandler(this.id)">7</button>
-            <button class="btn btn-primary number" id="8" onclick="numberClickHandler(this.id)">8</button>
-            <button class="btn btn-primary number" id="9" onclick="numberClickHandler(this.id)">9</button>
-            <button class="btn btn-primary number" id="0" onclick="numberClickHandler(this.id)">0</button>
+            <button class="btn btn-primary" data-value="1" data-type="number" >1</button>
+            <button class="btn btn-primary" data-value="2" data-type="number" >2</button>
+            <button class="btn btn-primary" data-value="3" data-type="number" >3</button>
+            <button class="btn btn-primary" data-value="4" data-type="number" >4</button>
+            <button class="btn btn-primary" data-value="5" data-type="number" >5</button>
+            <button class="btn btn-primary" data-value="6" data-type="number" >6</button>
+            <button class="btn btn-primary" data-value="7" data-type="number" >7</button>
+            <button class="btn btn-primary" data-value="8" data-type="number" >8</button>
+            <button class="btn btn-primary" data-value="9" data-type="number" >9</button>
+            <button class="btn btn-primary" data-value="0" data-type="number" >0</button>
+            <button class="btn btn-primary " data-value="." data-type="number" >.</button>
+        
         </div>
-        <div class="base operaors">
-            <button class="btn btn-primary" id="+" onclick="dependentOperator(this.dataset.operator)" data-operator="+">+</button>
-            <button class="btn btn-primary" id="-" onclick="dependentOperator(this.id)">-</button>
-            <button class="btn btn-primary" id="*" onclick="dependentOperator(this.id)">*</button>
-            <button class="btn btn-primary" id="/" onclick="dependentOperator(this.id)">/</button>
-            <button class="btn btn-primary" id="%" onclick="dependentOperator(this.id)">%</button>
-            <button class="btn btn-primary" id="**" onclick="dependentOperator(this.id)">x<sup>y</sup></button>
-            <button class="btn btn-primary" id="**-1" onclick="dependentOperator(this.id)">x<sup>-1</sup></button>
-            <button class="btn btn-primary" id="ans" onclick="ansClick()">ans</button>
-            <button class="btn btn-primary" id="=" onclick="equalClickHandler()">=</button>
-            <button class="btn btn-primary" id="=" onclick="clearClickHandler()">ac</button>
+        <div class=" operaors">
+            <button class="btn btn-primary" data-value="+" data-type="depOpe">+</button>
+            <button class="btn btn-primary" data-value="-" data-type="depOpe">-</button>
+            <button class="btn btn-primary" data-value="*" data-type="depOpe">*</button>
+            <button class="btn btn-primary" data-value="/" data-type="depOpe">/</button>
+            <button class="btn btn-primary" data-value="%" data-type="depOpe">%</button>
+            <button class="btn btn-primary" data-value="**" data-type="depOpe">x<sup>y</sup></button>
+            <button class="btn btn-primary"  id="xInv" data-value="**-1" data-type="depOpe">x<sup>-1</sup></button>
+            <button class="btn btn-primary" id="root" data-value="**1/" data-type="depOpe"><span>&#8730;</span></button>
+            <button class="btn btn-primary " data-type="ans">ans</button>
+            <button class="btn btn-primary" data-type="equal">=</button>
+            <button class="btn btn-primary" data-type="ce">CE</button>
+            <button class="btn btn-primary"  data-type="clear">ac</button>
         </div>
-        <div class="base single">
-            <button class="btn btn-primary" id="sin" name="0" onclick="nonDepOperator(this.id,this.name)">sin</button>
-            <button class="btn btn-primary" id="cos" name="0"onclick="nonDepOperator(this.id,this.name)">cos</button>
-            <button class="btn btn-primary" id="tan" name="0"onclick="nonDepOperator(this.id,this.name)">tan</button>
-            <button class="btn btn-primary" id="root" onclick="nonDepOperator(this.id)"><span>&#8730;</span></button>
-            <button class="btn btn-primary" id="rest" onclick="nonDepOperator(this.id)">x</button>
+        <div class=" single">
+            <button class="btn btn-primary" id="sin" name="0" data-value="sin" data-type="nonDepOpe">sin</button>
+            <button class="btn btn-primary" id="cos" name="0" data-value="cos" data-type="nonDepOpe">cos</button>
+            <button class="btn btn-primary" id="tan" name="0" data-value="tan" data-type="nonDepOpe">tan</button>
+            <button class="btn btn-primary" id="log" name="0" data-value="log" data-type="nonDepOpe">log</button>
+            <button class="btn btn-primary" id="log" name="0" data-value="Bin" data-type="nonDepOpe">Bin</button>
+            <button class="btn btn-primary" id="log" name="0" data-value="log" data-type="nonDepOpe">Hex</button>
+            <button class="btn btn-primary" id="log" name="0" data-value="ln" data-type="nonDepOpe">ln</button>
+           
         </div>
     </div>
 
@@ -71,6 +73,11 @@
         </script>
     <script src="./js/script.js"></script>
     <script src="./js/shift.js"></script>
+    <script>
+        function nonDepOperator(node){
+            console.dir(node)
+        }
+    </script>
 </body>
 
 </html>
