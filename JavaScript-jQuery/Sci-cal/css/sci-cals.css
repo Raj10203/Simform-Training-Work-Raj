@@ -1,4 +1,3 @@
-
 .container {
     display: flex;
     height: 100vh;
@@ -7,46 +6,51 @@
     align-items: center;
     flex-direction: column;
 }
-.back{
+
+.back {
     padding: 20px;
     background-color: rgb(221, 221, 221);
-    gap: 10px;  
+    gap: 10px;
     width: 80%;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
-.input-ans{
+
+.input-ans {
     flex-direction: column;
     justify-content: space-evenly;
-    /* width: 100%; */
 }
-.input-ans > input{
+
+.input-ans>input {
     width: 100%;
 }
-.btn-group{
+
+.btn-group {
     margin-top: 5px;
 }
-.btn{
+
+.btn {
     background-color: aliceblue;
     width: 100px;
 }
+
 .base {
     display: flex;
     align-self: center;
     justify-content: space-evenly;
-    /* justify-self: right; */
-    /* margin: 0 auto; */
     width: 100%;
 }
 
 span {
     content: "\221A";
 }
-.btn-dangere{
+
+.btn-dangere {
     background-color: #dc3545;
     color: white;
 }
+
 .btn-outline-danger:hover {
     background-color: inherit;
     color: initial;

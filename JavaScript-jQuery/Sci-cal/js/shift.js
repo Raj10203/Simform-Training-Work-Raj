@@ -25,16 +25,16 @@ memory.prototype.ms = function (value) {
 (function () {
     let calc = new Calculator;
     let mem = new memory;
-    
+
     document.querySelectorAll('.btn').forEach(button => {
         button.addEventListener('click', () => {
-            switch (button.getAttribute('data-type')) {
+            switch (button.dataset.type) {
                 case 'number':
-                    calc.number(button.getAttribute('data-value'));
+                    calc.number(button.dataset.value);
                     break;
 
                 case 'depOpe':
-                    calc.depOper(button.getAttribute('data-value'));
+                    calc.depOper(button.dataset.value);
                     break;
 
                 case 'equal':
@@ -50,7 +50,7 @@ memory.prototype.ms = function (value) {
                     break;
 
                 case 'nonDepOpe':
-                    calc.nonDepOpe(button.getAttribute('data-value'), button.getAttribute('name'));
+                    calc.nonDepOpe(button.dataset.value, button.dataset.name);
                     break;
 
                 case 'radianDegree':
@@ -62,7 +62,7 @@ memory.prototype.ms = function (value) {
                     break;
 
                 case 'memory':
-                    calc.memory(button.getAttribute('data-value'), mem);
+                    calc.memory(button.dataset.value, mem);
                     break;
 
                 case 'ce':
@@ -70,11 +70,11 @@ memory.prototype.ms = function (value) {
                     break;
 
                 case 'append':
-                    calc.appendString(button.getAttribute('data-value'));
+                    calc.appendString(button.dataset.value);
                     break;
 
                 case 'bracket':
-                    calc.bracket(button.getAttribute('data-value'));
+                    calc.bracket(button.dataset.value);
                     break;
 
                 case 'pm':
