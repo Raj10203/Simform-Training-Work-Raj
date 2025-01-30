@@ -1,30 +1,31 @@
-function memory(){
-    this.memory = 0;  
+function memory() {
+    this.memory = 0;
 }
 
-memory.prototype.mc = function() {
+memory.prototype.mc = function () {
     this.memory = 0;  // Memory clear
 };
 
-memory.prototype.mr = function() {
+memory.prototype.mr = function () {
     Ans = this.memory;  // Memory recall
     displayAns(Ans);
 };
 
-memory.prototype.mAdd = function(value) {
+memory.prototype.mAdd = function (value) {
     this.memory += value;  // Memory add
 };
 
-memory.prototype.mSubtract = function(value) {
+memory.prototype.mSubtract = function (value) {
     this.memory -= value;  // Memory subtract
 };
 
-memory.prototype.ms = function(value) {
+memory.prototype.ms = function (value) {
     this.memory = value;  // Memory set
 };
 (function () {
     let calc = new Calculator;
     let mem = new memory;
+    
     document.querySelectorAll('.btn').forEach(button => {
         button.addEventListener('click', () => {
             switch (button.getAttribute('data-type')) {
@@ -61,11 +62,23 @@ memory.prototype.ms = function(value) {
                     break;
 
                 case 'memory':
-                    calc.memory(button.getAttribute('data-value'),mem);
+                    calc.memory(button.getAttribute('data-value'), mem);
                     break;
-                    
+
                 case 'ce':
                     calc.ce();
+                    break;
+
+                case 'append':
+                    calc.appendString(button.getAttribute('data-value'));
+                    break;
+
+                case 'bracket':
+                    calc.bracket(button.getAttribute('data-value'));
+                    break;
+
+                case 'pm':
+                    calc.pm();
                     break;
 
                 default:
@@ -74,7 +87,6 @@ memory.prototype.ms = function(value) {
         })
     })
 })();
-
 
 function displayAns(ans) {
     let ch = document.getElementById('ans');
