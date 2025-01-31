@@ -6,7 +6,7 @@ class Calculator {
         this.evalString = "";
         this.dummy = "";
         this.defaultDegree = true;
-        this.shift = false;
+        this.shift = 0;
         this.sign = true;
     }
 
@@ -63,7 +63,6 @@ class Calculator {
         displayInput(this.dummy);
         this.num = Math.asin(this.num);
         this.num = this.defaultDegree ? this.num * 180 / Math.PI : this.num;
-        console.log('evalSring : ' + this.evalString)
     }
 
     cos() {
@@ -107,14 +106,12 @@ class Calculator {
     }
 
     decToBin(radix) {
-        console.log('called')
         ans = Number(this.num).toString(radix);
-        console.log(ans)
         displayAns(ans);
     }
 
     binToDec(radix) {
-        Ans = parseInt(this.num, radix);
+        ans = parseInt(this.num, radix);
         displayAns(ans);
     }
 
@@ -131,17 +128,14 @@ class Calculator {
         if (this.sign) {
             this.dummy = this.dummy.slice(0, position) + '-' + this.dummy.slice(position);
             this.num = String(Number(this.num) * (-1));
-            console.log(this.dummy);
-            displayInput(this.dummy);
             this.sign = false;
         }
         else {
             this.dummy = this.dummy.slice(0, position) + this.dummy.slice(position + 1);
             this.num = String(Number(this.num) * (-1));
             this.sign = true;
-            console.log(this.dummy);
-            displayInput(this.dummy);
         }
+        displayInput(this.dummy);
     }
 
     e() {
@@ -150,18 +144,18 @@ class Calculator {
         this.num = Math.pow(2.718281828459045, this.num);
     }
 
-    nonDepOpe(id, name = '0') {
+    nonDepOpe(id, name = 0) {
         switch (id) {
             case 'sin':
-                this.name ? this.sinInv() : this.sin();
+                name == '1' ? this.sinInv() : this.sin();
                 break;
 
             case 'cos':
-                this.name ? this.cosInv() : this.cos();
+                name == '1' ? this.cosInv() : this.cos();
                 break;
 
             case 'tan':
-                this.name ? this.tanInv() : this.tan();
+                name == '1' ? this.tanInv() : this.tan();
                 break;
 
             case 'hex':
@@ -201,7 +195,6 @@ class Calculator {
                 break;
 
             case 'fac':
-                console.log(this.num);
                 let res = 1;
                 for (let i = 1; i <= this.num; i++) {
                     res *= i;
@@ -221,84 +214,37 @@ class Calculator {
         this.evalString += this.num + value;
         this.num = "";
         displayInput(this.dummy);
-
     }
 
     radianDegree() {
         this.defaultDegree = (this.defaultDegree) ? false : true;
-        console.log(this.defaultDegree);
         document.getElementById('radianDegree').innerText = (this.defaultDegree) ? 'Degree' : 'Redian';
     }
 
     shiftBtn() {
-        let sin = document.getElementById('sin');
-        let cos = document.getElementById('cos');
-        let tan = document.getElementById('tan');
-        let xInv = document.getElementById('xInv');
-        let bin = document.getElementById('bin');
-        let oct = document.getElementById('oct');
-        let hex = document.getElementById('hex');
-        let pix = document.getElementById('pix');
-        this.shift
-            ? (
-                sin.innerHTML = 'sin',
-                sin.setAttribute('name', '0'),
-                cos.innerHTML = 'cos',
-                cos.setAttribute('name', '0'),
-                tan.innerHTML = 'tan',
-                tan.setAttribute('name', '0'),
-                xInv.innerHTML = 'x<sup>-1</sup>',
-                xInv.setAttribute('data-type', 'depOpe'),
-                xInv.setAttribute('data-value', '**-1'),
-                bin.innerHTML = 'Dec-Bin',
-                bin.setAttribute('data-value', 'bin'),
-                oct.innerHTML = 'Dec-Oct',
-                oct.setAttribute('data-value', 'oct'),
-                hex.innerHTML = 'Dec-Hex',
-                hex.setAttribute('data-value', 'hex'),
-                pix.innerHTML = 'PI',
-                pix.setAttribute('data-value', '*(22/7)'),
-                pix.setAttribute('data-type', 'append'),
-                this.shift = false
-            )
-            : (
-                sin.innerHTML = 'sin<sup>-1</sup>',
-                sin.setAttribute('name', '1'),
-                cos.innerHTML = 'cos<sup>-1</sup>',
-                cos.setAttribute('name', '1'),
-                tan.innerHTML = 'tan<sup>-1</sup>',
-                tan.setAttribute('name', '1'),
-                xInv.innerHTML = 'x!',
-                xInv.setAttribute('data-type', 'nonDepOpe'),
-                xInv.setAttribute('data-value', 'fac'),
-                bin.innerHTML = 'Bin-Dec',
-                bin.setAttribute('data-value', 'bin_1'),
-                oct.innerHTML = 'Oct-Dec',
-                oct.setAttribute('data-value', 'oct_1'),
-                hex.innerHTML = 'Hex-Dec',
-                hex.setAttribute('data-value', 'hex_1'),
-                pix.innerHTML = 'e<sup>x</sup>',
-                pix.setAttribute('data-value', 'e'),
-                pix.setAttribute('data-type', 'nonDepOpe'),
-                this.shift = true
-            );
-
+        this.shift = this.shift ? 0 : 1;
         console.log(this.shift);
+        for (let sign in signs) {
+            let s;
+            let node = document.getElementById(`${sign}`);
+            node.innerHTML = signs[sign][this.shift]['innerHTML'];
+            for (let key in s = signs[sign]['attributs']) {
+                node.setAttribute(`${s[key]}`, `${signs[sign][this.shift]['attributeValue'][key]}`)
+            }
+        }
     }
 
     ce() {
-        this.num
-            ? (
-                this.num = this.num.slice(0, -1),
-                this.dummy = this.dummy.slice(0, -1),
-                displayInput(this.dummy)
-            )
-            : (
-                this.evalString = this.evalString.slice(0, -1),
-                this.dummy = this.evalString,
-                displayInput(this.evalString)
-            );
-
+        if (this.num) {
+            this.num = this.num.slice(0, -1);
+            this.dummy = this.dummy.slice(0, -1);
+            displayInput(this.dummy)
+        }
+        else {
+            this.evalString = this.evalString.slice(0, -1);
+            this.dummy = this.evalString;
+            displayInput(this.evalString)
+        }
     }
 
     memory(funcName, obj) {

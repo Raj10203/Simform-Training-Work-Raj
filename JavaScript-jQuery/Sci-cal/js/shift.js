@@ -7,8 +7,8 @@ memory.prototype.mc = function () {
 };
 
 memory.prototype.mr = function () {
-    Ans = this.memory;  // Memory recall
-    displayAns(Ans);
+    ans = this.memory;  // Memory recall
+    displayAns(ans);
 };
 
 memory.prototype.mAdd = function (value) {
@@ -50,7 +50,7 @@ memory.prototype.ms = function (value) {
                     break;
 
                 case 'nonDepOpe':
-                    calc.nonDepOpe(button.dataset.value, button.dataset.name);
+                    calc.nonDepOpe(button.dataset.value, button.name);
                     break;
 
                 case 'radianDegree':
