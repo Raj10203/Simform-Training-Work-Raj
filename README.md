@@ -7,7 +7,7 @@ This repository will be organized into folders based on each topic covered in th
 ## Flipkart Task
 
 
-For the Flipkart task, since it involves HTML, CSS, and Bootstrap, I’ll create a folder named "html-css-bootstrap." Inside this folder, the Flipkart task will be stored as "flipkart-web.html" to keep it organized and easily accessible.
+For the Flipkart task, since it involves HTML, CSS, and Bootstrap, I’ll create a folder named "html-css-bootstrap." Inside this folder, the Flipkart task will be stored as "flipkart-web.html" to keep it organized and easily accessible.[Flipkart-Website](https://github.com/Raj10203/Simform-Training-Work-Raj/blob/master/HTML-CSS-BOOSTRAP/html/flipkart-web.html)
 
 
 ## Git-hub Task
