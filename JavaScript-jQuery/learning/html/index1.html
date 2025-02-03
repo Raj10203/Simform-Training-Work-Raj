@@ -20,57 +20,100 @@
 </head>
 
 <body>
-    <!-- <ol id="ol">
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-    </ol>
-    <div id="div"></div>
-    <button onclick="btnClick();">click me !</button>
-    <div id="first">First</div>
-    <div id="second">Second</div>
-    <script src="../js/index.js"></script>
-    <script>
-        // no need to call remove
 
-        ol.before('before'); // insert string "before" before <ol>
-        ol.after('after'); // insert string "after" after <ol>
-
-        let liFirst = document.createElement('li');
-        liFirst.innerHTML = 'prepend';
-        ol.prepend(liFirst); // insert liFirst at the beginning of <ol>
-
-        let liLast = document.createElement('li');
-        liLast.innerHTML = 'append';
-        ol.append(liLast);
-        div.insertAdjacentHTML('beforeend', '<p style="margin:0;">Bye</p> <hr style="margin:0;"><h1 style="margin:0;">hehe</h1>');
-     // take #second and after it insert #first
-        setTimeout(() => {
-            // div.remove();
-            second.after(first); 
-        }, 5000);
-    </script> -->
     <div class="alert" id="div" data-custom="hehe">
     </div>
     <input class="form-input" id="input">
     <script>
-        // let div2 = div.cloneNode(true); // clone the message
-        // div2.innerHTML += " <strong>Bye there!</strong>";
-        // div2.querySelector('strong').innerHTML = 'Bye there!'; // change the clone
+        class Stack {
 
-        // // div.after(div2); // show the clone after the existing div
-        // let input = document.getElementById('input');
+            constructor() {
+                this.items = [];
+            }
+            push(element) {
+                this.items.push(element);
+            }
+            pop() {
+                if (this.items.length == 0)
+                    return 'Underflow'
+                return this.items.pop();
+            }
+            isEmpty() {
+                return this.items.length == 0;
+            }
+            printStack() {
+                let str = "";
+                for (let i = 0; i < this.items.length; i++)
+                    str += this.items[i] + " ";
+                return str;
+            }
+        }
 
-        // // attribute => property
-        // input.setAttribute('value', 'text');
-        // alert(input.value); // text
+        function reverseAndRemoveBracket(str, start, end) {
+            str = str.slice(0, start) + str.slice(start + 1, end).split("").reverse().join("") + str.slice(end + 1);
+            return str;
+        }
+        let string = "(fed)";
+        function updateStrinf(string) {
+            let item = []
+            let start = 0;
+            n = string.length;
+            for (let i = 0; i < n; i++) {
+                if (string[i] == '(') {
+                    item.push(i);
+                }
+                else if (string[i] == ')') {
+                    start = item.pop();
+                    string = reverseAndRemoveBracket(string, start, i)
+                    i -= 2;
+                    n -= 2;
+                }
+            }
+            return string;
+        }
 
-        // // NOT property => attribute
-        // input.value = 'newValue';
-        // input.dataset.custom = "hihi";
-        // // input.setAttribute('value', '10');
-        // console.log(input.attributes)
+        let arr = [5, -1, 6, -5, -1, 2, -4, 5, -1]
+        function customrSort(arr) {
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] == -1) {
+                    continue;
+                }
+
+                for (let j = i + 1; j < arr.length; j++) {
+                    if (arr[j] == -1) {
+                        continue;
+                    }
+                    if (arr[i] > arr[j]) {
+                        let temp = arr[j];
+                        arr[j] = arr[i];
+                        arr[i] = temp;
+                    }
+                }
+            }
+            return arr;
+        }
+        function recursiveFunction(str, start = -1, end = -1) {
+            let item = []
+            if (start != -1 && end != -1) {
+                str = str.slice(0, start) + str.slice(start + 1, end).split("").reverse().join("") + str.slice(end + 1);
+                return str;
+            }
+            n = str.length;
+            for (let i = 0; i < str.length; i++) {
+                if (str[i] == '(') {
+                    item.push(i);
+                }
+                if (str[i] == ')') {
+                    start = item.pop();
+                    str = recursiveFunction(str, start, i);
+                    i-= 2;
+                }
+            }
+            return str;
+        }
+       
+        string = "foo(cash(va(asd(qwe)f)stas)dash)"
+        console.log(recursiveFunction(string));
         
     </script>
 </body>

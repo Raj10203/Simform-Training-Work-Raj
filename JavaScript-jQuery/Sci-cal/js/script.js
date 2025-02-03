@@ -229,7 +229,7 @@ class Calculator {
             let node = document.getElementById(`${sign}`);
             node.innerHTML = signs[sign][this.shift]['innerHTML'];
             for (let key in s = signs[sign]['attributs']) {
-                node.setAttribute(`${s[key]}`, `${signs[sign][this.shift]['attributeValue'][key]}`)
+                node.setAttribute(s[key], signs[sign][this.shift]['attributeValue'][key])
             }
         }
     }
