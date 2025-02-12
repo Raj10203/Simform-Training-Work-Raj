@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js & jQuery</title>
+
+    <style>
+        .alert {
+            padding: 15px;
+            border: 1px solid #d6e9c6;
+            border-radius: 4px;
+            color: #3c763d;
+            background-color: #dff0d8;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <div class="alert" id="div" data-custom="hehe">
+    </div>
+    <input class="form-input" id="input">
+    <script>
+        class Stack {
+
+            constructor() {
+                this.items = [];
+            }
+            push(element) {
+                this.items.push(element);
+            }
+            pop() {
+                if (this.items.length == 0)
+                    return 'Underflow'
+                return this.items.pop();
+            }
+            isEmpty() {
+                return this.items.length == 0;
+            }
+            printStack() {
+                let str = "";
+                for (let i = 0; i < this.items.length; i++)
+                    str += this.items[i] + " ";
+                return str;
+            }
+        }
+
+        function reverseAndRemoveBracket(str, start, end) {
+            str = str.slice(0, start) + str.slice(start + 1, end).split("").reverse().join("") + str.slice(end + 1);
+            return str;
+        }
+        let string = "(fed)";
+        function updateStrinf(string) {
+            let item = []
+            let start = 0;
+            n = string.length;
+            for (let i = 0; i < n; i++) {
+                if (string[i] == '(') {
+                    item.push(i);
+                }
+                else if (string[i] == ')') {
+                    start = item.pop();
+                    string = reverseAndRemoveBracket(string, start, i)
+                    i -= 2;
+                    n -= 2;
+                }
+            }
+            return string;
+        }
+
+        let arr = [5, -1, 6, -5, -1, 2, -4, 5, -1]
+        function customrSort(arr) {
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] == -1) {
+                    continue;
+                }
+
+                for (let j = i + 1; j < arr.length; j++) {
+                    if (arr[j] == -1) {
+                        continue;
+                    }
+                    if (arr[i] > arr[j]) {
+                        let temp = arr[j];
+                        arr[j] = arr[i];
+                        arr[i] = temp;
+                    }
+                }
+            }
+            return arr;
+        }
+        function recursiveFunction(str, start = -1, end = -1) {
+            let item = []
+            if (start != -1 && end != -1) {
+                str = str.slice(0, start) + str.slice(start + 1, end).split("").reverse().join("") + str.slice(end + 1);
+                return str;
+            }
+            n = str.length;
+            for (let i = 0; i < str.length; i++) {
+                if (str[i] == '(') {
+                    item.push(i);
+                }
+                if (str[i] == ')') {
+                    start = item.pop();
+                    str = recursiveFunction(str, start, i);
+                    i-= 2;
+                }
+            }
+            return str;
+        }
+       
+        string = "foo(cash(va(asd(qwe)f)stas)dash)"
+        console.log(recursiveFunction(string));
+        
+    </script>
+</body>
+
+</html>

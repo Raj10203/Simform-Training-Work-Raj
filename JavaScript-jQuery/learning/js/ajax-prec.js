@@ -1,6 +1,5 @@
 let factPara = document.getElementById("facts");
 let btn = document.getElementById("getFact");
-
 btn.addEventListener('click',btnClickHandler);
 
 async function btnClickHandler(){
@@ -21,9 +20,5 @@ async function btnClickHandler(){
             console.error("some error occured")
         }
     }
-
     await xhr.send();
 }
-(()=>{
-    
-})();

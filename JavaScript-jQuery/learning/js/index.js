@@ -552,7 +552,6 @@
 // // alert(order.dataset.orderState); // new
 // setTimeout(()=>{
 //     order.dataset.orderState = "canceled"; // (*)
-
 // },2000);
 
 function btnClick(){
@@ -560,6 +559,5 @@ function btnClick(){
     div.className = "alert";
     div.innerHTML = "<strong>Hi there!</strong> You've read an important message.";
     
-    document.body.prepend(div);
+    document.body.append(div);
 }
-
