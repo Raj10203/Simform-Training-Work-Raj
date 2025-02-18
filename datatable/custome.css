@@ -1,0 +1,7 @@
+#example .highlight-row {
+    background-color: #ffeb3b;
+    /* Yellow background for highlighted rows */
+}
+table.table.dataTable>:not(caption)>*>* {
+    background-color: inherit;
+}
