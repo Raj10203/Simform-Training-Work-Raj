@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataTable with Custom Column Widths</title>
+
+    <!-- Bootstrap CSS (optional but helps with styling) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!--  datatable css -->
+    <link href="https://cdn.datatables.net/2.2.2/css/dataTables.bootstrap5.min.css" rel="stylesheet"
+        integrity="sha384-BDXgFqzL/EpYeT/J5XTrxR+qDB4ft42notjpwhZDEjDIzutqmXeImvKS3YPH/WJX" crossorigin="anonymous">
+
+    <!-- button css -->
+    <link href="https://cdn.datatables.net/buttons/3.2.2/css/buttons.bootstrap5.min.css" rel="stylesheet"
+        integrity="sha384-DJhypeLg79qWALC844KORuTtaJcH45J+36wNgzj4d1Kv1vt2PtRuV2eVmdkVmf/U" crossorigin="anonymous">
+
+    <!-- select css -->
+    <link href="https://cdn.datatables.net/select/3.0.0/css/select.bootstrap5.min.css" rel="stylesheet"
+        integrity="sha384-TlxQ7BelG5MWHP/TbW8dDV3/3kwuo6rinsUsoQdbLGPvurwx/DA2Z49RVLIOxVrG" crossorigin="anonymous">
+
+    <!-- <link rel="stylesheet" href="custome.css"> -->
+    <style>
+        #example .highlight-row {
+            background-color: #ff0000;
+            color: white;
+            /* Yellow background for highlighted rows */
+        }
+
+        table.table.dataTable>:not(caption)>*>* {
+            color: inherit;
+            background-color: inherit;
+        }
+
+        .dt-button {
+            margin: 5px;
+            padding: 8px 12px;
+            font-size: 14px;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+        }
+
+        .btn {
+            margin: 10px;
+            border-radius: 4px !important;
+        }
+
+        .dt-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Make sure the button container is displayed correctly without grouping */
+        .dt-buttons {
+            /* display: flex; */
+            gap: 10px;
+            /* Space buttons apart */
+        }
+
+        .dt-buttons .dt-button {
+            display: inline-block;
+        }
+    </style>
+    <!-- <style></style> -->
+</head>
+
+<body>
+
+    <div class="container mt-4">
+        <h2>DataTable with Static Data and Custom Column Widths</h2>
+        <table id="example" class="display table-hover table table-bordered order-column" style="width:100%">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>ip Address</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th> Select Country </th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+
+            </tbody>
+        </table>
+        <button id="highlight-low-salary" class="btn btn-primary">Highlight Rows with Salary > 20,000</button>
+    </div>
+
+
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <!-- jQuery (required for DataTables) -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha384-NXgwF8Kv9SSAr+jemKKcbvQsz+teULH/a5UNJvZc6kP47hZgl62M1vGnw6gHQhb1"
+        crossorigin="anonymous"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"
+        integrity="sha384-+mbV2IY1Zk/X1p/nWllGySJSUN8uMs+gUAN10Or95UBH0fpj6GfKgPmgC5EXieXG"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"
+        integrity="sha384-VFQrHzqBh5qiJIU0uGU5CIW3+OWpdGGJM9LBnGbuIH2mkICcFZ7lPd/AAtI7SNf7"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"
+        integrity="sha384-/RlQG9uf0M2vcTw3CX7fbqgbj/h8wKxw7C3zu9/GxcBPRKOEcESxaxufwRXqzq6n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/2.2.2/js/dataTables.min.js"
+        integrity="sha384-AenwROccLjIcbIsJuEZmrLlBzwrhvO94q+wm9RwETq4Kkqv9npFR2qbpdMhsehX3"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/2.2.2/js/dataTables.bootstrap5.min.js"
+        integrity="sha384-G85lmdZCo2WkHaZ8U1ZceHekzKcg37sFrs4St2+u/r2UtfvSDQmQrkMsEx4Cgv/W"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/buttons/3.2.2/js/dataTables.buttons.min.js"
+        integrity="sha384-DmaAfo+/+UjRKHPidNNswlNqd9ybuE6yx9zKHyMY+vYy9SZhQEu4nauMVgwSx4Z/"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/buttons/3.2.2/js/buttons.bootstrap5.min.js"
+        integrity="sha384-BdedgzbgcQH1hGtNWLD56fSa7LYUCzyRMuDzgr5+9etd1/W7eT0kHDrsADMmx60k"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/buttons/3.2.2/js/buttons.colVis.min.js"
+        integrity="sha384-LC8PmH0Tdjy6c1Hesl75hUSKQuoIo3PCAr3svr0xJ4y90sNaTEMLK5n68Fl5VBqB"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/buttons/3.2.2/js/buttons.html5.min.js"
+        integrity="sha384-+E6fb8f66UPOVDHKlEc1cfguF7DOTQQ70LNUnlbtywZiyoyQWqtrMjfTnWyBlN/Y"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/buttons/3.2.2/js/buttons.print.min.js"
+        integrity="sha384-FvTRywo5HrkPlBKFrm2tT8aKxIcI/VU819roC/K/8UrVwrl4XsF3RKRKiCAKWNly"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/select/3.0.0/js/dataTables.select.min.js"
+        integrity="sha384-Y/112jU1UJsyj7J/WhficUVfFZTLF2TgmBuDHBvJmYS8f+dGaz3ZNKxgwcg4YgP9"
+        crossorigin="anonymous"></script>
+
+    <script>
+
+        $(document).ready(function () {
+            $.ajax({
+                url: 'https://67a9caa36e9548e44fc4e6d2.mockapi.io/SimformQuiz/quiz',  // The PHP file that returns data
+                method: 'GET',
+                dataType: 'json',
+                success: async function (data) {
+                    // Process each item in the response and create rows
+                    await data.forEach(function (item) {
+                        // Create table row (<tr>) and table data (<td>) elements
+                        var row = $('<tr></tr>');
+                        row.append('<td></td>');  // Select checkbox
+                        row.append('<td>' + item.enrollmentNumber + '</td>');
+                        row.append('<td>' + item.name + '</td>');
+                        row.append('<td>' + item.price + '</td>');
+                        row.append('<td>' + item.email + '</td>');
+                        row.append('<td>' + item.password + '</td>');
+
+                        // Create a <select> for the "Select Country" column
+                        var select = $(`<select class="form-select" id="selectCountry-row-${item.enrollmentNumber}"><option value="Edinburgh">Edinburgh</option><option value="London">London</option><option value="New York">New York</option><option value="San Francisco">San Francisco</option><option value="Tokyo">Tokyo</option></select>`);
+                        row.append($('<td></td>').append(select));  // Add select to the row
+
+                        // Append the row to the table
+                        $('#table-body').append(row);
+                        // let table = $('#example').DataTable({
+                        //     info: false
+                        // })
+                    });
+                    let id = 0;
+                    let exportFormatter = {
+                        columns: [1, 2, 3, 4, 5, 6],
+                        format: {
+                            body: function (data, row, col, node) {
+
+                                if (col == 1) {
+                                    id = data;
+                                }
+                                if (col == 6) {
+                                    return $(node)['0'].firstElementChild.value;;
+                                }
+                                return data;
+                            }
+                        }
+                    };
+                    let table = $('#example').DataTable({
+                        // paging: false,
+                        layout: {
+                            topStart: {
+                                buttons: [
+                                    { extend: 'copyHtml5', exportOptions: exportFormatter },
+                                    { extend: 'excelHtml5', exportOptions: exportFormatter },
+                                    { extend: 'print', exportOptions: exportFormatter }
+                                ]
+                            }
+                        },
+                        columnDefs: [
+                            {
+                                orderable: false,
+                                render: DataTable.render.select(),
+                                targets: 0
+                            }
+                        ],
+                        processing: true,
+                        severSide: true,
+                        select: {
+                            style: 'multi',
+                            selector: 'td:first-child',
+                            headerCheckbox: 'select-page'
+                        }
+
+                    })
+                },
+                error: function () {
+                    alert('Failed to fetch data from server.');
+                }
+            });
+
+
+            // let table = $('#example').DataTable({
+            //     layout: {
+            //         topStart: {
+            //             buttons: [
+            //                 { extend: 'copyHtml5', exportOptions: exportFormatter },
+            //                 { extend: 'excelHtml5', exportOptions: exportFormatter },
+            //                 { extend: 'print', exportOptions: exportFormatter }
+            //             ]
+            //         }
+            //     },
+
+
+            //     processing: true,
+            //     severSide: true,
+
+            //     select: {
+            //         style: 'multi',
+            //         selector: 'td:first-child',
+            //         headerCheckbox: 'select-page'
+            //     }
+            // });
+            $('#highlight-low-salary').on('click', function () {
+                table.rows().every(function () {
+                    var data = this.data();  // Get data for each row
+                    var salary = parseFloat(data['price']);  // Salary is in the 6th column (index 5)
+
+                    if (salary < 2000) {
+                        $(this.node()).toggleClass('highlight-row');  // Add highlight class to row
+                    } else {
+                        $(this.node()).removeClass('highlight-row');  // Remove highlight class if not
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+
+</html>
